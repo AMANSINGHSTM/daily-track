@@ -112,8 +112,8 @@ export function AnalyticsPage() {
                   <AreaChart data={rates} margin={{ top: 12, right: 8, left: -20, bottom: 0 }}>
                     <defs><linearGradient id="completion-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="var(--accent)" stopOpacity={0.22} /><stop offset="100%" stopColor="var(--accent)" stopOpacity={0} /></linearGradient></defs>
                     <CartesianGrid stroke={chartGridColor} strokeDasharray="3 5" vertical={false} />
-                    <XAxis dataKey="label" tick={{ fill: chartLabelColor, fontSize: 10 }} tickLine={false} axisLine={false} interval={3} />
-                    <YAxis domain={[0, 100]} tick={{ fill: chartLabelColor, fontSize: 10 }} tickLine={false} axisLine={false} tickFormatter={(value: number) => `${value}%`} />
+                    <XAxis dataKey="label" tick={{ fill: chartLabelColor, fontSize: 12 }} tickLine={false} axisLine={false} interval={3} />
+                    <YAxis domain={[0, 100]} tick={{ fill: chartLabelColor, fontSize: 12 }} tickLine={false} axisLine={false} tickFormatter={(value: number) => `${value}%`} />
                     <Tooltip contentStyle={tooltipStyle} labelStyle={{ color: "var(--text)" }} formatter={(value) => [`${value}%`, "Completion"]} />
                     <Area type="monotone" dataKey="rate" stroke="var(--accent)" strokeWidth={2} fill="url(#completion-fill)" activeDot={{ r: 4, fill: "var(--accent)", stroke: "var(--surface)" }} />
                   </AreaChart>
@@ -130,8 +130,8 @@ export function AnalyticsPage() {
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={weeklyData} margin={{ top: 12, right: 2, left: -25, bottom: 0 }}>
                     <CartesianGrid stroke={chartGridColor} strokeDasharray="3 5" vertical={false} />
-                    <XAxis dataKey="label" tick={{ fill: chartLabelColor, fontSize: 10 }} tickLine={false} axisLine={false} />
-                    <YAxis domain={[0, 100]} tick={{ fill: chartLabelColor, fontSize: 10 }} tickLine={false} axisLine={false} tickFormatter={(value: number) => `${value}%`} />
+                    <XAxis dataKey="label" tick={{ fill: chartLabelColor, fontSize: 12 }} tickLine={false} axisLine={false} />
+                    <YAxis domain={[0, 100]} tick={{ fill: chartLabelColor, fontSize: 12 }} tickLine={false} axisLine={false} tickFormatter={(value: number) => `${value}%`} />
                     <Tooltip contentStyle={tooltipStyle} labelStyle={{ color: "var(--text)" }} formatter={(value) => [`${value}%`, "Completion"]} />
                     <Bar dataKey="rate" radius={[4, 4, 0, 0]} maxBarSize={29}>
                       {weeklyData.map((item) => <Cell key={item.date} fill={item.date === today ? "var(--accent)" : "var(--chart-muted)"} />)}
@@ -150,8 +150,8 @@ export function AnalyticsPage() {
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={monthlyData} margin={{ top: 12, right: 2, left: -25, bottom: 0 }}>
                     <CartesianGrid stroke={chartGridColor} strokeDasharray="3 5" vertical={false} />
-                    <XAxis dataKey="label" tick={{ fill: chartLabelColor, fontSize: 10 }} tickLine={false} axisLine={false} interval={2} />
-                    <YAxis domain={[0, 100]} tick={{ fill: chartLabelColor, fontSize: 10 }} tickLine={false} axisLine={false} tickFormatter={(value: number) => `${value}%`} />
+                    <XAxis dataKey="label" tick={{ fill: chartLabelColor, fontSize: 12 }} tickLine={false} axisLine={false} interval={2} />
+                    <YAxis domain={[0, 100]} tick={{ fill: chartLabelColor, fontSize: 12 }} tickLine={false} axisLine={false} tickFormatter={(value: number) => `${value}%`} />
                     <Tooltip contentStyle={tooltipStyle} labelStyle={{ color: "var(--text)" }} formatter={(value) => [`${value}%`, "Completion"]} />
                     <Bar dataKey="rate" fill="var(--chart-muted)" radius={[3, 3, 0, 0]} maxBarSize={14} />
                   </BarChart>
