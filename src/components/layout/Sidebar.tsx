@@ -11,7 +11,8 @@ import {
   Settings2,
   Sparkles,
 } from "lucide-react";
-import { NavLink } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 
 const navigation = [
   { to: "/", label: "Overview", icon: LayoutDashboard },
@@ -24,6 +25,17 @@ const navigation = [
 ];
 
 export function Sidebar() {
+  const { pathname } = useLocation();
+  const mobileNavRef = useRef<HTMLElement>(null);
+
+  // Keep the active tab visible in the horizontally scrolling mobile nav.
+  useEffect(() => {
+    const nav = mobileNavRef.current;
+    const active = nav?.querySelector<HTMLElement>(".mobile-nav-link-active");
+    if (!nav || !active) return;
+    nav.scrollTo({ left: active.offsetLeft - (nav.clientWidth - active.offsetWidth) / 2, behavior: "smooth" });
+  }, [pathname]);
+
   return (
     <>
       <aside className="sidebar">
@@ -54,7 +66,7 @@ export function Sidebar() {
         <Brand compact />
         <span className="mobile-private"><CircleDot size={12} /> Local workspace</span>
       </div>
-      <nav className="mobile-nav" aria-label="Main navigation">
+      <nav ref={mobileNavRef} className="mobile-nav" aria-label="Main navigation">
         {navigation.map((item) => {
           const Icon = item.icon;
           return (
